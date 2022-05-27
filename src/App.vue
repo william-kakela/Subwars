@@ -5,10 +5,13 @@
       <router-link to="/">Hem</router-link>
       <router-link to="/news">Nyheter</router-link>
       <router-link to="/tournaments">Turneringar</router-link>
-      <router-link to="/register" v-if="isLoggedIn()">Registera</router-link>
-      <router-link to="/login" tag="button" class="login-button"
+      <router-link to="/register" v-if="!user">Registera</router-link>
+      <router-link to="/login" class="login-button" v-if="!user"
         >Login</router-link
       >
+      <button type="button" class="login-button" v-if="user" @click="logout">
+        Logout
+      </button>
     </nav>
     <router-view />
     <footer>
@@ -25,23 +28,32 @@
 
 
 <script>
+import { getAuth, signOut } from "firebase/auth";
+
 export default {
-  
-  data() {
-    
+  name: "App",
+
+  computed: {
+    user() {
+      return this.$store.getters.user;
+    },
   },
 
   methods: {
-    isLoggedIn() {
-      this.$store.user = true;
-       return this.$route.path === '/';
+    logout() {
+      const auth = getAuth();
+      signOut(auth)
+        .then(() => {
+          // Sign-out successful.
+          this.$store.commit('SET_USER', null)
+        })
     },
   },
 };
 </script>
 
 <style>
-#app {
+body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -61,7 +73,7 @@ nav {
   justify-content: space-around;
   align-items: center;
   background: #272727;
-  border-style: outset;
+  border-bottom: 1px solid #404040;
 }
 
 nav a {
