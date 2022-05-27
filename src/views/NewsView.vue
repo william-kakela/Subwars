@@ -1,22 +1,32 @@
 <template>
   <div class="news">
     <div class="news-header">
-      <h1>News</h1>
+      <h1>Nyheter</h1>
       <router-link to="/news-create" tag="button" class="create-news-button"
-        >Create news</router-link>
+        >skapa nyheter</router-link
+      >
     </div>
     <section class="news-wrapper">
-      <div class="news-box" v-for="(news, index) in newsLetters" :key="index">
-          <div class="news-img"></div>
-          <div class="news-text">
+      <article class="news-box" v-for="(news, index) in newsLetters" :key="index">
+        <div class="news-img"></div>
+        <div class="news-text">
+          <h3>
           {{ news.newsLetter }}
+          </h3>
           <p>
-            lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem
-            ipsu m lorem ipsum lorem ipsum dasdadasd asdasd asjhbdas das askdhba
-            sjdhb asdjhb asd as dasjhbd ajshb dhjasdjhasb djhabs
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat
+            dolor quod iusto a excepturi earum magnam aliquid saepe nisi neque
+            est rerum fugit beatae consequatur accusamus veritatis id, laborum
+            maxime totam minus laboriosam reprehenderit modi perferendis
+            adipisci. Sapiente error tenetur illo cumque cupiditate iure ratione
+            voluptates explicabo beatae porro a nesciunt nisi pariatur, quod
+            amet et dolore perspiciatis delectus inventore necessitatibus
+            corporis illum tempore minus animi. A officiis optio voluptates, hic
+            magnam velit quia aut excepturi aspernatur. Aperiam nisi nesciunt
+            reiciendis deserunt incidunt quisquam quae accusamus inventore fuga
           </p>
-          </div>
-      </div>
+        </div> 
+      </article>
     </section>
   </div>
 </template>
@@ -50,55 +60,48 @@ export default {
 </script>
 
 <style scoped>
-
 .news {
   background: #272727;
-  min-height: 100vh;
   color: white;
-  padding: 4rem;
 }
 
 .news-header {
   display: flex;
   justify-content: space-between;
-}
-
-.news-header h1 {
-  margin-left: 870px;
+  align-items: center;
 }
 
 .news-wrapper {
-  display: grid;
-  grid-template-columns: 1fr;
-  border-style: solid;
+  display: flex;
+  flex-direction: column;
   gap: 40px;
 }
 
+.news-box {
+  color: white;
+  border-bottom: 1px solid #404040;
+  display: flex;
+  padding: 30px;
+}
+
 .news-img {
-  height: 120px;
-  width: 120px;
+  height: 200px;
+  width: 200px;
   background: url("@/assets/nyhet.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  margin-top: 2rem;
-}
-
-.news-box {
-  background: #646464;
-  color: white;
+  flex-shrink: 0;
 }
 
 .news-box p {
-  color: white;
+  color: #ccc;
+  font-size: 12px;
+  line-height: 1.2rem;
 }
 
 .news-text {
-  display: flex;
-	flex-direction: column; 
-	gap: 30px; 
-	align-items: flex-end;
-  width: 400px;
+  padding-inline: 50px;
 }
 
 .create-news-button {
@@ -108,7 +111,6 @@ export default {
   width: 120px;
   height: 40px;
   border: none;
-  margin-bottom: 20px;
   cursor: pointer;
 }
 </style>

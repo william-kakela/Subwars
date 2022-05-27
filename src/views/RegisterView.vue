@@ -1,6 +1,6 @@
 <template>
   <div class="register">
-    <h1>Registera</h1>
+    <h1>Registrera</h1>
     <form @submit.prevent="register">
       <div class="input-wrapper-register">
       <label for="email">E-postadress</label>
@@ -51,18 +51,25 @@ export default {
 
 .register {
   background: #272727;
-  min-height: 100vh;
   color: white;
-  padding: 1rem;
+  text-align: center;
 }
+
 
 .input-wrapper-register {
 	display: flex;
 	flex-direction: column;
 	gap: 5px;
   padding-bottom: 20px;
-  width: 308px;
-  margin-left: 780px;
+  align-items: center;
+}
+
+.input-wrapper-register > input {
+  width: 300px;
+  background-color: #646464;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 ::placeholder {
@@ -73,10 +80,13 @@ export default {
    background: #646464;
    color: white;
    border-radius: 10px;
-   width: 80px;
-   height: 40px;
+   padding-block: 15px;
    border: none;
    cursor: pointer;
+   padding-inline: 30px;
+   letter-spacing: 0.1rem;
+   text-transform: uppercase;
+   font-weight: 700;
 }
 
 </style>

@@ -43,10 +43,8 @@ export default {
 <style scoped>
 
 .news-create {
-background: #272727;
-  min-height: 100vh;
+  background: #272727;
   color: white;
-  padding: 4rem;
 }
 
 .input-wrapper-create-news {

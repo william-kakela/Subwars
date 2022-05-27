@@ -1,6 +1,6 @@
 <template>
 	<div class="login">
-		<h1>Subwars</h1>
+		<h1>Logga in</h1>
 		<form @submit.prevent="login">
 			<div class="input-wrapper">
 				<label for="email">E-postadress</label>
@@ -70,28 +70,28 @@ export default {
 
 .login {
  background: #272727;
- min-height: 100vh;
  color: white;
- padding: 1rem;
+ text-align: center;
 }
 
 label {
   color: white;
 }
 
-input {
-  background: #646464;
-  color: white;
-  border-radius: 5px;
-}
-
 .input-wrapper {
-	display: flex;
+  display: flex;
 	flex-direction: column;
 	gap: 5px;
   padding-bottom: 20px;
-  margin-left: 780px;
-  width: 308px;
+  align-items: center;
+}
+
+.input-wrapper > input {
+  width: 300px;
+  background-color: #646464;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 ::placeholder {
@@ -99,20 +99,19 @@ input {
 }
 
 .button-login {
-   background: #646464;
+  background: #646464;
    color: white;
    border-radius: 10px;
-   width: 80px;
-   height: 40px;
+   padding-block: 15px;
    border: none;
-   text-decoration: inter;
-   font-size: bold;
    cursor: pointer;
+   padding-inline: 30px;
+   letter-spacing: 0.1rem;
+   text-transform: uppercase;
+   font-weight: 700;
 }
 
 h1 {
-  text-decoration: bold;
   color: white;
-  padding: 100px;
 }
 </style>

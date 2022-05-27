@@ -60,9 +60,7 @@ export default {
 <style scoped>
 .home {
   background: #272727;
-  min-height: 100vh;
   color: white;
-  padding: 4rem;
 }
 
 .top {

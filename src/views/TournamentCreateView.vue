@@ -45,13 +45,8 @@ export default {
 
 .tournament-create {
  background: #272727;
-  min-height: 100vh;
   color: white;
-  padding: 4rem;
-}
 
-label {
-  font: bold;
 }
 
 input {

@@ -1,21 +1,25 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">#Subwars</router-link>
+    <nav class="container">
+      <router-link class="brand" to="/">#Subwars</router-link>
       <router-link to="/">Hem</router-link>
       <router-link to="/news">Nyheter</router-link>
       <router-link to="/tournaments">Turneringar</router-link>
-      <router-link to="/register" v-if="!user">Registera</router-link>
+      <router-link to="/register" v-if="!user">Registrera</router-link>
       <router-link to="/login" class="login-button" v-if="!user"
-        >Login</router-link
+        >Logga in</router-link
       >
       <button type="button" class="login-button" v-if="user" @click="logout">
-        Logout
+        Logga ut
       </button>
     </nav>
-    <router-view />
+    <div class="container">
+      <div class="inner-container">
+        <router-view />
+      </div>
+    </div>
     <footer>
-      <div class="wrapper-footer">
+      <div class="wrapper-footer container">
         <h3>#Subwars</h3>
         <p>
           Här kan du möta och spela med de härliga streamers vårat community
@@ -42,11 +46,10 @@ export default {
   methods: {
     logout() {
       const auth = getAuth();
-      signOut(auth)
-        .then(() => {
-          // Sign-out successful.
-          this.$store.commit('SET_USER', null)
-        })
+      signOut(auth).then(() => {
+        // Sign-out successful.
+        this.$store.commit("SET_USER", null);
+      });
     },
   },
 };
@@ -57,38 +60,58 @@ body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin: 0;
   padding: 0;
   font-size: 100%;
   box-sizing: border-box;
+  background-color: #272727;
+
+}
+
+.container {
+  max-width: 1224px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  
+}
+
+.inner-container {
+  padding-block: 1rem;
+  min-height: calc(100vh - 380px);
 }
 
 nav {
-  padding: 30px;
+  padding-block: 30px;
   text-decoration: none;
   list-style: none;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   background: #272727;
   border-bottom: 1px solid #404040;
 }
 
 nav a {
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 14px;
   text-decoration: none;
   transition: all 0.3s ease 0s;
-  color: white;
+  color: #ccc;
 }
 nav a:hover {
-  transition: all 0.3s ease 0s;
+  color: white;
 }
 
 nav a.router-link-exact-active {
   text-decoration: none;
   transition: all 0.3s ease 0s;
+}
+
+.brand {
+font-size: 16px;
+font-weight: 900;
+color: white;
 }
 
 .login-button {
@@ -108,11 +131,8 @@ nav a.router-link-exact-active {
 footer {
   height: 120px;
   background-color: #000;
-  display: grid;
-  place-items: center;
-  inset-inline: 0;
-  bottom: 0;
   padding: 4rem;
+  text-align: center;
 }
 
 footer h3 {
@@ -124,7 +144,7 @@ footer p {
 }
 
 .wrapper-footer {
-  align-items: center;
-  width: 450px;
+  display: grid;
+  place-items: center;
 }
 </style>

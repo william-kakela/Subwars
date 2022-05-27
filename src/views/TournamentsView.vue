@@ -1,25 +1,28 @@
 <template>
   <div class="tournaments">
     <div class="tournament-header">
-    <h1>Turneringar</h1>
-    <router-link to="/tournament-create" tag="button" class="create-tournament-button">Skapa turnering</router-link> 
-  </div>
-     <section class="tournament-top">
-      <div class="tournament-box"
-        v-for="tournament in tournaments.slice(1, 5)"
-        :key="tournament.uid"
+      <h1>Turneringar</h1>
+      <router-link
+        to="/tournament-create"
+        tag="button"
+        class="create-tournament-button"
+        >Skapa turnering</router-link
       >
-        <router-link :to="`/tournament/${tournament.id}`">
-        {{ tournament.title }}
-          </router-link>
-      </div>
+    </div>
 
-    </section>
+    <div
+      class="tournament-box"
+      v-for="tournament in tournaments"
+      :key="tournament.uid"
+    >
+      <router-link :to="`/tournament/${tournament.id}`">
+        {{ tournament.title }}
+      </router-link>
+    </div>
   </div>
 </template>
 
 <script>
-
 import { collection, getDocs } from "firebase/firestore";
 import db from "@/firebase/firebase";
 
@@ -40,10 +43,10 @@ export default {
     async fetchTournaments() {
       const querySnapshot = await getDocs(collection(db, "tournaments"));
       querySnapshot.forEach((doc) => {
-        this.tournaments.push(({
-           id: doc.id,
+        this.tournaments.push({
+          id: doc.id,
           ...doc.data(),
-        }));
+        });
       });
     },
   },
@@ -54,53 +57,47 @@ export default {
 
 .tournaments {
   background: #272727;
-  min-height: 100vh;
   color: white;
-  padding-top: 1rem;
-  padding: 3rem;
-}
-
-.tournament-top {
-  height: 250px;
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: 60px;
 }
 
 .tournament-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
-
-.tournament-header h1 {
- margin-left: 820px;
-}
-
 
 .tournament-box {
   background: #646464;
   height: 200px;
   display: grid;
   place-items: center;
-  background: url('@/assets/fb_image.png');
+  background: url("@/assets/fb_image.png");
   background-position: center;
   background-size: 100%;
   background-repeat: no-repeat;
-  
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.tournament-box:before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  top: 0; bottom: 0;
+  background: rgba(0,0,0,.5);
 }
 
 .tournament-box a {
   text-decoration: none;
   font-size: 1.5rem;
   color: white;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  z-index: 50;
 }
 .tournament-box a:hover {
-  background-image: linear-gradient(
-    to right,
-    #000,
-    #000 50%,
-    #f1c232 50%
-  );
+  background-image: linear-gradient(to right, #000, #000 50%, #f1c232 50%);
   background-size: 200% 100%;
   background-position: -100%;
   -webkit-background-clip: text;
@@ -118,6 +115,4 @@ export default {
   margin-bottom: 20px;
   cursor: pointer;
 }
-
-
 </style>
