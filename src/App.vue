@@ -77,8 +77,8 @@ body {
 }
 
 .inner-container {
-  padding-block: 1rem;
-  min-height: calc(100vh - 380px);
+  padding-block: 3rem;
+  min-height: calc(100vh - 380px - 60px);
 }
 
 nav {
