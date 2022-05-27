@@ -47,10 +47,11 @@
         </button>
     </section>
 
-    <section class="tournament-view-bottom" v-if="tournament">
-      <h3 class="team">#Lag 1</h3>
+   <template v-if="users.length">
+      <section class="tournament-view-bottom" v-for="(team, team_index) in teams" :key="team_index">
+      <h3 class="team">#Lag {{ team_index +1 }}</h3>
       {{ tournament.title }}
-      <div v-for="(user, index) in users" :key="user.id">
+      <div v-for="(user, index) in team" :key="user.id">
         {{ user.username }} - {{ user.rank }} - {{ user.elo }}
         <button
           type="button"
@@ -61,20 +62,7 @@
         </button>
       </div>
     </section>
-    <section class="tournament-view-bottom" v-if="tournament">
-      <h3 class="team">#Lag 2</h3>
-      {{ tournament.title }}
-      <div v-for="(user, index) in users" :key="user.id">
-        {{ user.username }} - {{ user.rank }} - {{ user.elo }}
-        <button
-          type="button"
-          class="kick-player"
-          @click="deleteUser(user, index)"
-        >
-          Ta bort
-        </button>
-      </div>
-    </section>
+   </template>
   </div>
 </template>
 
@@ -101,7 +89,7 @@ export default {
       tournament: null,
       users: [],
       casters: [],
-      chunked: [],
+      teams: [],
     };
   },
   computed: {
@@ -109,9 +97,9 @@ export default {
       return this.$store.getters.user;
     },
   },
-  created() {
-    this.fetchTournament();
-    this.fetchUsers();
+   async created() {
+    await this.fetchTournament();
+    await this.fetchUsers();
     this.randomizeTeams();
   },
   methods: {
@@ -140,10 +128,11 @@ export default {
 
     randomizeTeams() {
       let size = 5;
+      this.teams = [];
       Array.from({ length: Math.ceil(this.users.length / size) }, (val, i) => {
-        this.chunked.push(this.users.slice(i * size, i * size + size, val));
+        this.teams.push(this.users.slice(i * size, i * size + size, val));
       });
-      console.log(this.chunked);
+      console.log(this.teams);
     },
   },
 };
@@ -157,9 +146,6 @@ export default {
   padding: 3rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-}
-
-.tournament-view-left {
 }
 
 .price-box-wrapper {
