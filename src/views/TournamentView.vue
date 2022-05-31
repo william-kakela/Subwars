@@ -48,7 +48,7 @@
 			<div v-for="(team, team_index) in teams" :key="team_index" class="team">
 				<h4 class="team-title">#Lag {{ team_index + 1 }}</h4>
 				<div v-for="(user, index) in team" :key="user.id" class="team-user">
-					{{ user.username }} - {{ user.rank }} - {{ user.elo }}
+					{{ user.username }} - {{ user.rank }} - {{ user.elo }} 
 					<button type="button" @click="deleteUser(user, index)">
 						Ta bort
 					</button>
@@ -111,15 +111,17 @@ export default {
 			}
 		},
 		async fetchUsers() {
+			this.users = []
 			const querySnapshot = await getDocs(collection(db, 'users'));
 			querySnapshot.forEach((user) => {
 				this.users.push({ ...user.data(), id: user.id });
 			});
 		},
-		async deleteUser(user, index) {
+		async deleteUser(user) {
 			await deleteDoc(doc(db, 'users', user.id));
 			// Ta bort användaren lokalt.
-			this.users.splice(index, 1);
+			//this.users.splice(index, 1);
+			this.fetchUsers();
 		},
 		randomizeTeams() {
 			let size = 5;

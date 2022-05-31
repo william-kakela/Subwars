@@ -51,6 +51,9 @@ export default {
         this.$store.commit("SET_USER", null);
       });
     },
+
+    matchUser() {
+    },
   },
 };
 </script>
@@ -66,14 +69,12 @@ body {
   font-size: 100%;
   box-sizing: border-box;
   background-color: #272727;
-
 }
 
 .container {
   max-width: 1224px;
   margin-inline: auto;
   padding-inline: 1rem;
-  
 }
 
 .inner-container {
@@ -109,9 +110,9 @@ nav a.router-link-exact-active {
 }
 
 .brand {
-font-size: 16px;
-font-weight: 900;
-color: white;
+  font-size: 16px;
+  font-weight: 900;
+  color: white;
 }
 
 .login-button {

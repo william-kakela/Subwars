@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div v-if="tournaments.length" class="home">
     <section class="top">
       <div class="box">
         <router-link :to="`/tournament/${tournaments[0].id}`">
@@ -11,7 +11,7 @@
       <div
         class="box"
         v-for="tournament in tournaments.slice(1, 4)"
-        :key="tournament.uid"
+        :key="tournament.id"
       >
        
         <router-link :to="`/tournament/${tournament.id}`">
@@ -19,6 +19,8 @@
         </router-link>
       </div>
     </section>
+      {{user.permission}}
+
   </div>
 </template>
 
@@ -50,7 +52,6 @@ export default {
           id: doc.id,
           ...doc.data(),
         });
-        console.log(doc);
       });
     },
   },
