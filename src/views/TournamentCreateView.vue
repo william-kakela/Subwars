@@ -44,22 +44,30 @@ export default {
 <style scoped>
 
 .tournament-create {
- background: #272727;
+  background: #272727;
   color: white;
-
-}
-
-input {
-  border-radius: 5%;
+  text-align: center;
 }
 
 .input-wrapper-create-tournament {
-	display: flex;
-	flex-direction: column;
-	gap: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
   padding-bottom: 20px;
-  width: 308px;
-  margin-left: 730px;
+  align-items: center;
+}
+
+.input-wrapper-create-tournament> input {
+  width: 300px;
+  background-color: #646464;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+::placeholder {
+  color: white;
 }
 
 .button-tournament { 

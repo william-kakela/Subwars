@@ -3,10 +3,8 @@
 		<section>
 			<h3 class="title-text">{{ tournament.title }}</h3>
 			<p class="bread-text">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet
-				architecto consectetur debitis dicta dignissimos distinctio, dolor
-				doloremque doloribus, eius, enim et fuga fugiat id illum ipsa iste
-				itaque.
+				Välkommen till Subwars, Detta är en turnering för att skapa en roligt upplevelse och en chans på att vinna fantastiska priser. 
+				Var god att läs igenom reglerna innan du anmäler dig till turneringen.
 			</p>
 		</section>
 
@@ -33,14 +31,9 @@
 		<section>
 			<h3 class="title-text">Regler</h3>
 			<p class="bread-text">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
-				expedita iste maiores minima odio omnis quo ratione sequi? Alias animi
-				autem blanditiis, commodi dolor dolore harum odit quia similique
-				tempore. Aut cumque dignissimos dolores, fugit libero maiores, neque,
-				numquam odio quas recusandae tempora tenetur? Ab at commodi esse
-				explicabo odit ratione, sequi tenetur voluptates. Aperiam architecto in
-				ipsum molestias, nisi provident quae quod. Dolor doloribus ipsam
-				praesentium repudiandae temporibus. Architecto ea est impedit in.
+				Fusk är förbjudet! Vid FUSK = direkt bannad från alla deltaganden i subwars.
+				Rasism är totalt förbjudet.
+				Man spelar mr 16 där det vinnande laget går vidare och det förlorande laget åker ut.
 			</p>
 		</section>
 

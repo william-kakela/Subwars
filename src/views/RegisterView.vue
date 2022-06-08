@@ -38,14 +38,14 @@
           v-model="user.username"
         />
       </div>
-      <div class="input-wrapper-register">
+     <!-- <div class="input-wrapper-register">
         <label for="permission">Behörighet</label>
-        <select name="permission" id="permission" v-model="user.permission">
+         <select name="permission" id="permission" v-model="user.permission">
           <option value="">Välj</option>
           <option value="USER">Användare</option>
           <option value="ADMIN">Admin</option>
         </select>
-      </div>
+      </div> -->
       <button type="submit" class="button-register">Registrera</button>
     </form>
   </div>

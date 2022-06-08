@@ -4,6 +4,9 @@
     <form @submit.prevent="login">
       <div class="input-wrapper">
         <label for="email">E-postadress</label>
+          <div v-if="error" class="alert alert-danger" role="alert">
+          {{error}}
+        </div>
         <input
           type="email"
           id="email"
@@ -38,6 +41,7 @@ export default {
     return {
       email: "",
       password: "",
+      error: '',
     };
   },
 
@@ -66,26 +70,10 @@ export default {
              this.$router.push("/");
           });
         })
-        .catch((error) => {
-          console.log(error);
+        .catch(() => {
+          this.error = 'Fel användarnamn eller lösenord, vänlig försök igen';
         });
     },
-
-    //async conectionLogin() {
-    //const getAuth = getAuth
-    //const userAuthLoggedin = new userAuthLoggedin();
-    //const users = await getAuth(getAuth, userAuthLoggedin);
-    //const user = users.user;
-    //const q = query(collection(db, "users"), where("uid", "==", user.uid));
-    //const docs = await getDocs(q);
-    //if(docs.docs.length === 0) {
-    //await addDoc(collection(db,"users"), {
-    //uid: user.uid,
-    //name: user.username,
-    //email: user.email
-    //});
-    //}
-    //}
   },
 };
 </script>

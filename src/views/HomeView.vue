@@ -19,7 +19,7 @@
         </router-link>
       </div>
     </section>
-      {{user.permission}}
+      
 
   </div>
 </template>
@@ -96,18 +96,17 @@ export default {
 }
 
 .box a {
-  text-decoration: none;
-  font-size: 2rem;
+   text-decoration: none;
+  font-size: 1.5rem;
   color: white;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  z-index: 50;
 }
 
 .box a:hover {
-  background-image: linear-gradient(
-    to right,
-    #000,
-    #000 50%,
-    #f1c232 50%
-  );
+  background-image: linear-gradient(to right, #000, #000 50%, #f1c232 50%);
   background-size: 200% 100%;
   background-position: -100%;
   -webkit-background-clip: text;

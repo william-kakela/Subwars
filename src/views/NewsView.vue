@@ -14,18 +14,11 @@
           {{ news.newsLetter }}
           </h3>
           <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat
-            dolor quod iusto a excepturi earum magnam aliquid saepe nisi neque
-            est rerum fugit beatae consequatur accusamus veritatis id, laborum
-            maxime totam minus laboriosam reprehenderit modi perferendis
-            adipisci. Sapiente error tenetur illo cumque cupiditate iure ratione
-            voluptates explicabo beatae porro a nesciunt nisi pariatur, quod
-            amet et dolore perspiciatis delectus inventore necessitatibus
-            corporis illum tempore minus animi. A officiis optio voluptates, hic
-            magnam velit quia aut excepturi aspernatur. Aperiam nisi nesciunt
-            reiciendis deserunt incidunt quisquam quae accusamus inventore fuga
+            {{news.newsText}}
           </p>
+          
         </div> 
+        
       </article>
     </section>
   </div>
@@ -45,6 +38,7 @@ export default {
   data() {
     return {
       newsLetters: [],
+      newsText: [],
     };
   },
 
@@ -53,6 +47,7 @@ export default {
       const querySnapshot = await getDocs(collection(db, "news"));
       querySnapshot.forEach((doc) => {
         this.newsLetters.push(doc.data());
+        this.newsText.push(doc.data());
       });
     },
   },
