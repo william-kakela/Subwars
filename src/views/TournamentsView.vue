@@ -6,6 +6,7 @@
         to="/tournament-create"
         tag="button"
         class="create-tournament-button"
+        v-if="user"
         >Skapa turnering</router-link
       >
     </div>
@@ -31,6 +32,12 @@ export default {
 
   created() {
     this.fetchTournaments();
+  },
+
+  computed: {
+    user() {
+      return this.$store.getters.user;
+    },
   },
 
   data() {

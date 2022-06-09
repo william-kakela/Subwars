@@ -2,23 +2,29 @@
   <div class="news">
     <div class="news-header">
       <h1>Nyheter</h1>
-      <router-link to="/news-create" tag="button" class="create-news-button"
+      <router-link
+        to="/news-create"
+        tag="button"
+        class="create-news-button"
+        v-if="user"
         >skapa nyheter</router-link
       >
     </div>
     <section class="news-wrapper">
-      <article class="news-box" v-for="(news, index) in newsLetters" :key="index">
+      <article
+        class="news-box"
+        v-for="(news, index) in newsLetters"
+        :key="index"
+      >
         <div class="news-img"></div>
         <div class="news-text">
           <h3>
-          {{ news.newsLetter }}
+            {{ news.newsLetter }}
           </h3>
           <p>
-            {{news.newsText}}
+            {{ news.newsText }}
           </p>
-          
-        </div> 
-        
+        </div>
       </article>
     </section>
   </div>
@@ -33,6 +39,12 @@ export default {
 
   created() {
     this.fetchNews();
+  },
+
+  computed: {
+    user() {
+      return this.$store.getters.user;
+    },
   },
 
   data() {
